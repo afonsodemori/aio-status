@@ -1,3 +1,7 @@
+td {
+    height: 4em;
+}
+
 .status {
     display: inline-block;
     width: 1.5em;
@@ -32,4 +36,14 @@
 /* down */
 .status-9 {
     background-color: #D32F2F;
+}
+
+.reason, .time, .duration {
+    display: block;
+    font-size: .7em;
+    line-height: 1.2em;
+}
+
+.reason {
+    color: #900;
 }
