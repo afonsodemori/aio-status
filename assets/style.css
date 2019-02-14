@@ -1,0 +1,34 @@
+.status {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: inherit;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
+}
+
+/* paused */
+.status-0 {
+    background-color: #424242;
+}
+
+/* not checked yet */
+.status-1 {
+    background-color: #E0E0E0;
+}
+
+/* up */
+.status-2 {
+    background-color: #8BC34A;
+}
+
+/* seems down */
+.status-8 {
+    background-color: #FFC107;
+}
+
+/* down */
+.status-9 {
+    background-color: #D32F2F;
+}
