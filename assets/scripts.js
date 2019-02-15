@@ -9,6 +9,7 @@ function init(keys) {
             '<span class="duration"></span></td>' +
             '<td class="align-middle text-center"><span class="today"></span></td>' +
             '<td class="align-middle text-center"><span class="last-7-days"></span></td>' +
+            '<td class="align-middle text-center"><span class="last-15-days"></span></td>' +
             '<td class="align-middle text-center"><span class="last-30-days"></span></td>' +
             '</tr>'
         ;
@@ -55,10 +56,11 @@ function loadData() {
             url: 'https://api.uptimerobot.com/v2/getMonitors',
             data: {
                 api_key: apiKeys[m].key,
-                custom_uptime_ratios: '1-7-30',
+                custom_uptime_ratios: '1-7-15-30',
                 // custom_uptime_ranges: '1465440758_1466304758',
                 logs: 1,
-                log_types: 1
+                log_types: 1,
+                logs_limit: 1
             },
             async: true,
             success: function (data) {
@@ -103,11 +105,18 @@ function loadData() {
                     .html((ratio[1] === '100.000' ? 100 : ratio[1]) + '%')
                 ;
 
+                $(id + ' .last-15-days')
+                    .removeAttr('class')
+                    .addClass('last-15-days')
+                    .addClass('ratio-' + ratio[2].split('.')[0])
+                    .html((ratio[2] === '100.000' ? 100 : ratio[2]) + '%')
+                ;
+
                 $(id + ' .last-30-days')
                     .removeAttr('class')
                     .addClass('last-30-days')
-                    .addClass('ratio-' + ratio[2].split('.')[0])
-                    .html((ratio[2] === '100.000' ? 100 : ratio[2]) + '%')
+                    .addClass('ratio-' + ratio[3].split('.')[0])
+                    .html((ratio[3] === '100.000' ? 100 : ratio[3]) + '%')
                 ;
             }
         });
