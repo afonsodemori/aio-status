@@ -1,10 +1,15 @@
+td {
+    height: 4em;
+}
+
 .status {
     display: inline-block;
-    width: 1.3em;
-    height: 1.3em;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: .5em;
     vertical-align: inherit;
     border-radius: 100%;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
 }
 
@@ -31,4 +36,43 @@
 /* down */
 .status-9 {
     background-color: #D32F2F;
+}
+
+.reason, .time, .duration {
+    display: block;
+    font-size: .7em;
+    line-height: 1.2em;
+    white-space: nowrap;
+}
+
+.reason {
+    color: #900;
+}
+
+[class*=ratio-] {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    font-size: .8em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.ratio-0 {
+    background: #000;
+}
+
+.ratio-96, .ratio-97, .ratio-98 {
+    background: #FFB300;
+}
+
+.ratio-99 {
+    background: #9CCC65;
+}
+
+.ratio-100 {
+    background: #689F38;
 }
