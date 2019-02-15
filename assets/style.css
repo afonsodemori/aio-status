@@ -47,3 +47,31 @@ td {
 .reason {
     color: #900;
 }
+
+[class*=ratio-] {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    font-size: .8em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.ratio-0 {
+    background: #000;
+}
+
+.ratio-96, .ratio-97, .ratio-98 {
+    background: #FFB300;
+}
+
+.ratio-99 {
+    background: #9CCC65;
+}
+
+.ratio-100 {
+    background: #689F38;
+}

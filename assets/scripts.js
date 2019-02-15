@@ -7,9 +7,9 @@ function init(keys) {
             '<span class="time"></span>' +
             '<span class="reason"></span>' +
             '<span class="duration"></span></td>' +
-            '<td class="align-middle text-center today"></td>' +
-            '<td class="align-middle text-center last-7-days"></td>' +
-            '<td class="align-middle text-center last-30-days"></td>' +
+            '<td class="align-middle text-center"><span class="today"></span></td>' +
+            '<td class="align-middle text-center"><span class="last-7-days"></span></td>' +
+            '<td class="align-middle text-center"><span class="last-30-days"></span></td>' +
             '</tr>'
         ;
     }
@@ -89,9 +89,26 @@ function loadData() {
                     }
                 }
 
-                $(id + ' .today').html(ratio[0] + '%');
-                $(id + ' .last-7-days').html(ratio[1] + '%');
-                $(id + ' .last-30-days').html(ratio[2] + '%');
+                $(id + ' .today')
+                    .removeAttr('class')
+                    .addClass('today')
+                    .addClass('ratio-' + ratio[0].split('.')[0])
+                    .html((ratio[0] === '100.000' ? 100 : ratio[0]) + '%')
+                ;
+
+                $(id + ' .last-7-days')
+                    .removeAttr('class')
+                    .addClass('last-7-days')
+                    .addClass('ratio-' + ratio[1].split('.')[0])
+                    .html((ratio[1] === '100.000' ? 100 : ratio[1]) + '%')
+                ;
+
+                $(id + ' .last-30-days')
+                    .removeAttr('class')
+                    .addClass('last-30-days')
+                    .addClass('ratio-' + ratio[2].split('.')[0])
+                    .html((ratio[2] === '100.000' ? 100 : ratio[2]) + '%')
+                ;
             }
         });
     }
