@@ -1,3 +1,5 @@
+const refresh = 15;
+
 function init(keys) {
     let append = '';
     for (let i = 0; i < keys.length; i++) {
@@ -7,10 +9,10 @@ function init(keys) {
             '<span class="time"></span>' +
             '<span class="reason"></span>' +
             '<span class="duration"></span></td>' +
-            '<td class="align-middle text-center"><span class="today"></span></td>' +
-            '<td class="align-middle text-center"><span class="last-7-days"></span></td>' +
-            '<td class="align-middle text-center"><span class="last-15-days"></span></td>' +
-            '<td class="align-middle text-center"><span class="last-30-days"></span></td>' +
+            '<td class="align-middle text-center"><span class="r0"></span></td>' +
+            '<td class="align-middle text-center"><span class="r1"></span></td>' +
+            '<td class="align-middle text-center"><span class="r2"></span></td>' +
+            '<td class="align-middle text-center"><span class="r3"></span></td>' +
             '</tr>'
         ;
     }
@@ -80,8 +82,8 @@ function loadData() {
                     $(id + ' .latest .duration').html('');
                 }
 
-                for (let l = 0; l < monitor.logs.length; l++) {
-                    let log = monitor.logs[l];
+                for (let i = 0; i < monitor.logs.length; i++) {
+                    let log = monitor.logs[i];
 
                     if (log.reason.code !== 200) {
                         $(id + ' .latest .time').html(formatDatetime(log.datetime));
@@ -91,39 +93,33 @@ function loadData() {
                     }
                 }
 
-                $(id + ' .today')
-                    .removeAttr('class')
-                    .addClass('today')
-                    .addClass('ratio-' + ratio[0].split('.')[0])
-                    .html((ratio[0] === '100.000' ? 100 : ratio[0]) + '%')
-                ;
-
-                $(id + ' .last-7-days')
-                    .removeAttr('class')
-                    .addClass('last-7-days')
-                    .addClass('ratio-' + ratio[1].split('.')[0])
-                    .html((ratio[1] === '100.000' ? 100 : ratio[1]) + '%')
-                ;
-
-                $(id + ' .last-15-days')
-                    .removeAttr('class')
-                    .addClass('last-15-days')
-                    .addClass('ratio-' + ratio[2].split('.')[0])
-                    .html((ratio[2] === '100.000' ? 100 : ratio[2]) + '%')
-                ;
-
-                $(id + ' .last-30-days')
-                    .removeAttr('class')
-                    .addClass('last-30-days')
-                    .addClass('ratio-' + ratio[3].split('.')[0])
-                    .html((ratio[3] === '100.000' ? 100 : ratio[3]) + '%')
-                ;
+                for (let i = 0; i < ratio.length; i++) {
+                    let content = (ratio[i] === '100.000' ? 100 : ratio[i]) + '%';
+                    let $el = $(id + ' .r' + i);
+                    if (content !== $el.html()) {
+                        $el
+                            .removeAttr('class')
+                            .addClass('r' + i)
+                            .addClass('ratio-' + ratio[i].split('.')[0])
+                            .html(content)
+                            .hide()
+                            .slideDown()
+                        ;
+                    }
+                }
             }
         });
     }
 }
 
 loadData();
+let timeout = refresh;
 setInterval(function () {
-    loadData();
-}, 10000);
+    if (--timeout === 0) {
+        loadData();
+        timeout = refresh;
+        $('#countdown').html(timeout);
+    } else {
+        $('#countdown').html(timeout);
+    }
+}, 1000);
