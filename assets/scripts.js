@@ -50,7 +50,6 @@ function formatDuration(duration) {
 
 function loadData() {
     for (let m = 0; m < apiKeys.length; m++) {
-
         $.ajax({
             type: 'post',
             url: 'https://api.uptimerobot.com/v2/getMonitors',
@@ -72,8 +71,6 @@ function loadData() {
                     .addClass('status')
                     .addClass('status-' + monitor.status)
                 ;
-
-                console.log(monitor.logs);
 
                 for (let l = 0; l < monitor.logs.length; l++) {
                     let log = monitor.logs[l];
