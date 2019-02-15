@@ -2,27 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Status page</title>
+    <title>Status page ‹ afonso.io</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/assets/style.css">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
 </head>
 <body>
-<table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-        <th class="align-middle">Current status (<span id="countdown">-</span>)</th>
-        <th class="align-middle text-center">Latest downtime</th>
-        <th class="align-middle text-center">Today</th>
-        <th class="align-middle text-center">7 days</th>
-        <th class="align-middle text-center">15 days</th>
-        <th class="align-middle text-center">30 days</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+<header>
+    <h1>afonso.io status page</h1>
+</header>
+<section id="summary">
+    <div>
+        <div><strong>Last update:</strong> <span class="last-update">loading...</span></div>
+        <div><strong>Refresh in:</strong> <span class="countdown">loading...</span></div>
+    </div>
+</section>
+<main>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="align-middle">Current status</th>
+                <th class="align-middle text-center">Latest downtime</th>
+                <th class="align-middle text-center">Today</th>
+                <th class="align-middle text-center">7 days</th>
+                <th class="align-middle text-center">15 days</th>
+                <th class="align-middle text-center">30 days</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</main>
+<footer>
+    <div>
+        Last update: <span class="last-update">loading...</span> - Refresh in <span class="countdown">loading...</span>
+    </div>
+    <hr>
+    <div>
+        Afonso de Mori Ayres da Silva<br>
+        <a href="https://afonsodemori.com">www.afonsodemori.com</a> |
+        <a href="https://afonso.io/contact">Contact</a>
+    </div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

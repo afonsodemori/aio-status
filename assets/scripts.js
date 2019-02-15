@@ -4,15 +4,15 @@ function init(keys) {
     let append = '';
     for (let i = 0; i < keys.length; i++) {
         append += '<tr id="monitor-' + keys[i].id + '">' +
-            '<td class="align-middle text-nowrap"><span class="status"></span> ' + keys[i].name + '</td>' +
+            '<th class="align-middle text-nowrap"><span class="status"></span> ' + keys[i].name + '</th>' +
             '<td class="align-middle text-center latest">' +
-            '<span class="time"></span>' +
-            '<span class="reason"></span>' +
-            '<span class="duration"></span></td>' +
-            '<td class="align-middle text-center"><span class="r0"></span></td>' +
-            '<td class="align-middle text-center"><span class="r1"></span></td>' +
-            '<td class="align-middle text-center"><span class="r2"></span></td>' +
-            '<td class="align-middle text-center"><span class="r3"></span></td>' +
+            '<span class="time">loading...</span>' +
+            '<span class="reason">loading...</span>' +
+            '<span class="duration">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r0">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r1">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r2">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r3">loading...</span></td>' +
             '</tr>'
         ;
     }
@@ -33,7 +33,7 @@ $.ajax({
 
 function formatDatetime(timestamp) {
     let date = new Date(timestamp * 1000);
-    let options = {year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit'};
+    let options = {year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'};
     return new Intl.DateTimeFormat('en-GB', options).format(date);
 }
 
@@ -107,19 +107,23 @@ function loadData() {
                         ;
                     }
                 }
+
+                $('.last-update').html(formatDatetime((new Date()).getTime()/1000));
             }
         });
     }
 }
 
-loadData();
+setTimeout(function () {
+    loadData();
+}, 1000);
 let timeout = refresh;
 setInterval(function () {
     if (--timeout === 0) {
         loadData();
+        $('.countdown').html(timeout);
         timeout = refresh;
-        $('#countdown').html(timeout);
     } else {
-        $('#countdown').html(timeout);
+        $('.countdown').html(timeout);
     }
 }, 1000);
