@@ -72,6 +72,12 @@ function loadData() {
                     .addClass('status-' + monitor.status)
                 ;
 
+                if (monitor.logs.length === 0) {
+                    $(id + ' .latest .time').html('');
+                    $(id + ' .latest .reason').html('');
+                    $(id + ' .latest .duration').html('');
+                }
+
                 for (let l = 0; l < monitor.logs.length; l++) {
                     let log = monitor.logs[l];
 
