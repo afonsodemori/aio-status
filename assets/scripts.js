@@ -2,7 +2,7 @@ function init(keys) {
     let append = '';
     for (let i = 0; i < keys.length; i++) {
         append += '<tr id="monitor-' + keys[i].id + '">' +
-            '<td class="align-middle"><span class="status"></span> ' + keys[i].name + '</td>' +
+            '<td class="align-middle text-nowrap"><span class="status"></span> ' + keys[i].name + '</td>' +
             '<td class="align-middle text-center latest">' +
             '<span class="time"></span>' +
             '<span class="reason"></span>' +
