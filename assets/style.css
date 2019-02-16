@@ -14,7 +14,7 @@ strong {
 }
 
 header {
-    background: var(--monitor-up);
+    background: var(--monitor-unknown);
     text-align: center;
 }
 
@@ -25,9 +25,18 @@ header h1 {
 }
 
 #summary {
-    padding: 1em;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+#summary .section {
+    float: left;
+    padding: 1em;
+    border-right: 1px solid #eee;
+}
+
+#summary .section.last {
+    border: 0;
 }
 
 table {

@@ -9,16 +9,26 @@
     <link rel="stylesheet" href="/assets/style.css">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+    <meta name="theme-color" content="#E0E0E0">
 </head>
 <body>
 <header>
     <h1>afonso.io status page</h1>
 </header>
 <section id="summary">
-    <div>
+    <div class="section">
+        <div><strong>Up:</strong> <span class="monitors-up">0</span> monitors</div>
+        <div><strong>Down:</strong> <span class="monitors-down">0</span> monitors</div>
+    </div>
+    <div class="section">
+        <div><strong>Paused:</strong> <span class="monitors-paused">0</span> monitors</div>
+        <div><strong>Unknown:</strong> <span class="monitors-unknown">0</span> monitors</div>
+    </div>
+    <div class="section last">
         <div><strong>Last update:</strong> <span class="last-update">loading...</span></div>
         <div><strong>Refresh in:</strong> <span class="countdown">loading...</span></div>
     </div>
+    <div style="clear: both;"></div>
 </section>
 <main>
     <table class="table">

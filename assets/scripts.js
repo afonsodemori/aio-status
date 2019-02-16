@@ -18,6 +18,9 @@ function init(keys) {
     }
 
     $('table').append(append);
+
+    loadData();
+    checkStatus();
 }
 
 let apiKeys = null;
@@ -33,7 +36,14 @@ $.ajax({
 
 function formatDatetime(timestamp) {
     let date = new Date(timestamp * 1000);
-    let options = {year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'};
+    let options = {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
     return new Intl.DateTimeFormat('en-GB', options).format(date);
 }
 
@@ -108,17 +118,37 @@ function loadData() {
                     }
                 }
 
-                $('.last-update').html(formatDatetime((new Date()).getTime()/1000));
+                $('.last-update').html(formatDatetime((new Date()).getTime() / 1000));
             }
         });
     }
 }
 
-setTimeout(function () {
-    loadData();
-}, 1000);
+function checkStatus() {
+    let up = $('.status-2').length;
+    let down = $('.status-9').length;
+    let paused = $('.status-1').length;
+    let unknown = $('.status').length - up - down - paused;
+
+    $('.monitors-up').html(up);
+    $('.monitors-down').html(down);
+    $('.monitors-paused').html(paused);
+    $('.monitors-unknown').html(unknown);
+
+    if (down > 0) {
+        $('header').css('background', 'var(--monitor-down)');
+        $('link[rel="icon"]').attr('href', '/favicon-down.ico');
+        $('meta[name="theme-color"]').attr('content', '#D32F2F');
+    } else {
+        $('header').css('background', 'var(--monitor-up)');
+        $('link[rel="icon"]').attr('href', '/favicon.ico');
+        $('meta[name="theme-color"]').attr('content', '#8BC34A');
+    }
+}
+
 let timeout = refresh;
 setInterval(function () {
+    checkStatus();
     if (--timeout === 0) {
         loadData();
         $('.countdown').html(timeout);
