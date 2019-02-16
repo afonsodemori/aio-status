@@ -1,3 +1,8 @@
+# 1.2.0, 2019-02-16
+  - [feature] New layout (add header, footer and UX improvements)
+  - [feature] Add stats to the top of the page
+  - [feature] Change color scheme according to the up/down status
+
 # 1.1.0, 2019-02-15
   - [feature] Add column latest downtime
   - Add status.afonso.io to the list of services
