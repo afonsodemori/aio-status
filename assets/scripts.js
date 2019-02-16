@@ -1,5 +1,11 @@
 const refresh = 15;
 
+if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('/service-worker.js').then(function(){
+        console.debug('SW: Register');
+    }).catch(console.log);
+}
+
 function init(keys) {
     let append = '';
     for (let i = 0; i < keys.length; i++) {
@@ -26,7 +32,7 @@ function init(keys) {
 
 let apiKeys = null;
 $.ajax({
-    async: false,
+    async: true,
     url: '/config/api-keys.json',
     dataType: 'json',
     success: function (data) {
