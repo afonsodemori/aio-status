@@ -5,14 +5,14 @@ function init(keys) {
     for (let i = 0; i < keys.length; i++) {
         append += '<tr id="monitor-' + keys[i].id + '">' +
             '<th class="align-middle text-nowrap"><span class="status"></span> ' + keys[i].name + '</th>' +
-            '<td class="align-middle text-center latest">' +
-            '<span class="time">loading...</span>' +
+            '<td class="align-middle latest">' +
             '<span class="reason">loading...</span>' +
+            '<span class="time">loading...</span>' +
             '<span class="duration">loading...</span></td>' +
-            '<td class="align-middle text-center"><span class="r0">loading...</span></td>' +
-            '<td class="align-middle text-center"><span class="r1">loading...</span></td>' +
-            '<td class="align-middle text-center"><span class="r2">loading...</span></td>' +
-            '<td class="align-middle text-center"><span class="r3">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r0 ratio-color-loading">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r1 ratio-color-loading">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r2 ratio-color-loading">loading...</span></td>' +
+            '<td class="align-middle text-center"><span class="r3 ratio-color-loading">loading...</span></td>' +
             '</tr>'
         ;
     }
@@ -71,7 +71,6 @@ function loadData() {
                 custom_uptime_ratios: '1-7-15-30',
                 // custom_uptime_ranges: '1465440758_1466304758',
                 logs: 1,
-                log_types: 1,
                 logs_limit: 1
             },
             async: true,
@@ -92,16 +91,21 @@ function loadData() {
                     $(id + ' .latest .duration').html('');
                 }
 
-                for (let i = 0; i < monitor.logs.length; i++) {
-                    let log = monitor.logs[i];
+                let log = monitor.logs[0];
+                $(id + ' .latest .time').html(formatDatetime(log.datetime));
+                $(id + ' .latest .reason').html(log.reason.code + ' - ' + log.reason.detail);
+                $(id + ' .latest .duration').html(formatDuration(log.duration));
 
-                    if (log.reason.code !== 200) {
-                        $(id + ' .latest .time').html(formatDatetime(log.datetime));
-                        $(id + ' .latest .reason').html(log.reason.code + ' - ' + log.reason.detail);
-                        $(id + ' .latest .duration').html(formatDuration(log.duration));
-                        break;
-                    }
+                let color = 'inherit';
+                switch (monitor.status) {
+                    case 0: color = 'var(--monitor-paused)'; break;
+                    case 1: color = 'var(--monitor-not-checked-yet)'; break;
+                    case 2: color = 'var(--monitor-up)'; break;
+                    case 8: color = 'var(--monitor-seems-offline)'; break;
+                    case 9: color = 'var(--monitor-down)'; break;
                 }
+
+                $(id + ' .latest .reason').css('color', color);
 
                 for (let i = 0; i < ratio.length; i++) {
                     let content = (ratio[i] === '100.000' ? 100 : ratio[i]) + '%';
@@ -110,7 +114,7 @@ function loadData() {
                         $el
                             .removeAttr('class')
                             .addClass('r' + i)
-                            .addClass('ratio-' + ratio[i].split('.')[0])
+                            .addClass('ratio-color-' + ratio[i].split('.')[0])
                             .html(content)
                             .hide()
                             .slideDown()
