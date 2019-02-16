@@ -24,6 +24,7 @@ strong {
 }
 
 header {
+    transition: 400ms;
     background: var(--monitor-not-checked-yet);
     text-align: center;
 }
@@ -37,6 +38,15 @@ header h1 {
 #summary {
     background: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+#summary.fixed {
+    transition: 200ms;
+    border-top: .5em solid var(--monitor-not-checked-yet);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
 }
 
 #summary .section {
@@ -60,6 +70,7 @@ main {
 }
 
 .status {
+    transition: 400ms;
     display: inline-block;
     margin-right: .5em;
     background: var(--monitor-not-checked-yet);

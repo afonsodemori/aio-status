@@ -168,14 +168,28 @@ function checkStatus() {
 
     if (down > 0) {
         $('header').css('background', 'var(--monitor-down)');
+        $('#summary.fixed').css('border-top-color', 'var(--monitor-down)');
         $('link[rel="icon"]').attr('href', '/favicon-down.ico');
         $('meta[name="theme-color"]').attr('content', '#D32F2F');
     } else {
         $('header').css('background', 'var(--monitor-up)');
+        $('#summary.fixed').css('border-top-color', 'var(--monitor-up)');
         $('link[rel="icon"]').attr('href', '/favicon.ico');
         $('meta[name="theme-color"]').attr('content', '#8BC34A');
     }
 }
+
+$(document).on('scroll', function () {
+    let $div = $('#summary');
+    let pos = $('header').height();
+    if (pos < window.scrollY) {
+        $div.addClass('fixed');
+        $('body').css('padding-top', $div.height());
+    } else {
+        $('body').css('padding-top', 0);
+        $div.removeClass('fixed');
+    }
+});
 
 let timeout = refresh;
 setInterval(function () {
