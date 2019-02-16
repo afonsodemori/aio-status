@@ -1,19 +1,19 @@
 :root {
-    --monitor-paused: #333; /* 0 - paused */
+    --monitor-paused: #757575; /* 0 - paused */
     --monitor-not-checked-yet: #E0E0E0; /* 1 - not checked yet */
-    --monitor-up: #8BC34A; /* 2 - up */
-    --monitor-seems-down: orange; /* 8 - seems down */
+    --monitor-up: #7CB342; /* 2 - up */
+    --monitor-seems-down: #F57C00; /* 8 - seems down */
     --monitor-down: #D32F2F; /* 9 - down */
 
-    --uptime-excelent: #689F38;
-    --uptime-good: var(--monitor-up);
+    --uptime-excelent: var(--monitor-up);
+    --uptime-good: #9CCC65;
     --uptime-warning: var(--monitor-seems-down);
     --uptime-danger: var(--monitor-down);
     --uptime-paused: var(--monitor-paused);
 }
 
 body {
-    background: #fafafa;
+    background: #FAFAFA;
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     font-weight: 300;
@@ -73,12 +73,12 @@ main {
 
 /* paused */
 .status-0 {
-    background-color: #424242;
+    background-color: var(--monitor-paused);
 }
 
 /* not checked yet */
 .status-1 {
-    background-color: #E0E0E0;
+    background-color: var(--monitor-not-checked-yet);
 }
 
 /* up */
@@ -88,7 +88,7 @@ main {
 
 /* seems down */
 .status-8 {
-    background-color: #FFC107;
+    background-color: var(--monitor-seems-down);
 }
 
 /* down */
@@ -105,6 +105,28 @@ main {
 
 .reason {
     font-weight: bold;
+}
+
+table {
+    cursor: default;
+}
+
+th[class*=d-] {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td[class*=r-] {
+    text-align: center;
+    vertical-align: middle;
+    background: #F5F5F5;
+}
+
+tbody tr:hover,
+tr:hover td[class*=r-],
+td.r-0,
+td.r-1 {
+    background: #eee;
 }
 
 [class*=ratio-color] {
