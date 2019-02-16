@@ -158,7 +158,7 @@ function loadData() {
 function checkStatus() {
     let up = $('.status-2').length;
     let down = $('.status-9').length;
-    let paused = $('.status-1').length;
+    let paused = $('.status-0').length;
     let unknown = $('.status').length - up - down - paused;
 
     $('.monitors-up').html(up);
