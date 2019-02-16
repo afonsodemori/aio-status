@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/assets/style.css?v=1.2.0">
+    <link rel="stylesheet" href="/assets/style.css">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <meta name="theme-color" content="#E0E0E0">
+    <link rel="manifest" href="/assets/app.manifest">
 </head>
 <body>
 <header>
@@ -33,23 +34,24 @@
 <main>
     <table class="table">
         <thead>
-            <tr>
-                <th class="align-middle">Current status</th>
-                <th class="align-middle text-center">Latest downtime</th>
-                <th class="align-middle text-center">Today</th>
-                <th class="align-middle text-center">7 days</th>
-                <th class="align-middle text-center">15 days</th>
-                <th class="align-middle text-center">30 days</th>
-            </tr>
+        <tr>
+            <th>Current status</th>
+            <th>Latest status</th>
+            <th class="d-avg">Last 24h</th>
+            <th class="d-avg">Last 30 days</th>
+            <th class="d-0">Day 0</th>
+            <th class="d-1">Day -1</th>
+            <th class="d-2">Day -2</th>
+            <th class="d-3">Day -3</th>
+            <th class="d-4">Day -4</th>
+            <th class="d-5">Day -5</th>
+            <th class="d-6">Day -6</th>
+        </tr>
         </thead>
         <tbody></tbody>
     </table>
 </main>
 <footer>
-    <div>
-        Last update: <span class="last-update">loading...</span> - Refresh in <span class="countdown">loading...</span>
-    </div>
-    <hr>
     <div>
         Afonso de Mori Ayres da Silva<br>
         <a target="_blank" href="https://afonsodemori.com">www.afonsodemori.com</a> |
@@ -63,6 +65,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="/assets/scripts.js?v=1.2.0"></script>
+<script type="text/javascript" src="/assets/scripts.js"></script>
 </body>
 </html>

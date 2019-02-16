@@ -1,3 +1,12 @@
+# 1.3.0, 2019-02-17
+  - [feature] Add offline support
+  - [bugfix] Fix count of paused/unknown monitors
+  - Add notification when ajax request is not successful
+  - Update favicons according to status
+  - Fix data fetched from API, fix color coherence, add data columns
+  - Keep the summary bar fixed when scrolling the page
+  - Improve UX and change last downtime column to last status
+
 # 1.2.0, 2019-02-16
   - [feature] New layout (add header, footer and UX improvements)
   - [feature] Add stats to the top of the page
