@@ -24,7 +24,7 @@ strong {
 }
 
 header {
-    transition: 600ms;
+    transition: 800ms;
     background: var(--monitor-not-checked-yet);
     text-align: center;
 }
@@ -66,7 +66,7 @@ main {
 }
 
 .status {
-    transition: 600ms;
+    transition: 800ms;
     display: inline-block;
     margin-right: .5em;
     background: var(--monitor-not-checked-yet);
@@ -194,4 +194,17 @@ footer a:hover {
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid #fff;
+}
+
+.toast {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 2em;
+    padding: 1em 2em;
+    background: #333;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    opacity: 1;
+    display: none;
 }

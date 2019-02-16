@@ -156,6 +156,19 @@ function loadData() {
                 }
 
                 $('.last-update').html(formatDatetime((new Date()).getTime() / 1000));
+            },
+            error: function (data) {
+                let toast = '<div class="toast">Error fetching uptime data. Check your internet connection.<div>';
+                if ($('.toast').length === 0) {
+                    $('body').append(toast);
+                    $('.toast')
+                        .fadeIn()
+                        .delay(5000)
+                        .fadeOut(200, function () {
+                            this.remove();
+                        })
+                    ;
+                }
             }
         });
     }
