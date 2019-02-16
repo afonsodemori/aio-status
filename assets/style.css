@@ -24,7 +24,7 @@ strong {
 }
 
 header {
-    transition: 400ms;
+    transition: 600ms;
     background: var(--monitor-not-checked-yet);
     text-align: center;
 }
@@ -70,7 +70,7 @@ main {
 }
 
 .status {
-    transition: 400ms;
+    transition: 600ms;
     display: inline-block;
     margin-right: .5em;
     background: var(--monitor-not-checked-yet);
