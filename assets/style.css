@@ -59,10 +59,6 @@ header h1 {
     border: 0;
 }
 
-table {
-    border-top: none;
-}
-
 main {
     width: 100%;
     overflow: auto;
