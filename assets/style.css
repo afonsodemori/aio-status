@@ -24,7 +24,7 @@ strong {
 }
 
 header {
-    transition: 800ms;
+    transition: 600ms;
     background: var(--monitor-not-checked-yet);
     text-align: center;
 }

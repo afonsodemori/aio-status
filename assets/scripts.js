@@ -194,7 +194,7 @@ function checkStatus() {
         $('header').css('background', 'var(--monitor-up)');
         $('#summary.fixed').css('border-top-color', 'var(--monitor-up)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-up.ico');
-        $('meta[name="theme-color"]').attr('content', '#8BC34A');
+        $('meta[name="theme-color"]').attr('content', '#7CB342');
     } else {
         $('header').css('background', 'var(--monitor-not-checked-yet)');
         $('#summary.fixed').css('border-top-color', 'var(--monitor-not-checked-yet)');
