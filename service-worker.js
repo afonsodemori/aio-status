@@ -4,11 +4,13 @@ self.addEventListener('install', function (event) {
             return cache.addAll(
                 [
                     '/',
+                    '/about.html',
 
                     '/config/api-keys.json',
 
-                    '/assets/scripts.js',
-                    '/assets/style.css',
+                    '/assets/general.css',
+                    '/assets/dashboard.css',
+                    '/assets/dashboard.js',
 
                     '/assets/img/favicons/android-chrome-192x192.png',
                     '/assets/img/favicons/android-chrome-512x512.png',

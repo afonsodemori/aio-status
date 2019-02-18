@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Status dashboard ‹ status.afonso.io</title>
+    <title>About ‹ status.afonso.io</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/general.css">
-    <link rel="stylesheet" href="/assets/css/dashboard.css">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <meta name="theme-color" content="#E0E0E0">
     <link rel="manifest" href="/assets/app.manifest">
@@ -27,11 +26,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about.html">About</a>
+                <a class="nav-link" href="/">Home</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/about.html">About <span class="sr-only">(current)</a>
             </li>
             <li class="nav-item">
                 <a target="_blank" class="nav-link" href="https://afonsodemori.com/contact">Contact</a>
@@ -40,42 +39,29 @@
     </div>
 </nav>
 <header>
-    <h1>Status dashboard</h1>
+    <h1>About</h1>
 </header>
-<section id="summary">
-    <div class="section">
-        <div><strong>Up:</strong> <span class="monitors-up">0</span> monitors</div>
-        <div><strong>Down:</strong> <span class="monitors-down">0</span> monitors</div>
-    </div>
-    <div class="section">
-        <div><strong>Paused:</strong> <span class="monitors-paused">0</span> monitors</div>
-        <div><strong>Unknown:</strong> <span class="monitors-unknown">0</span> monitors</div>
-    </div>
-    <div class="section last">
-        <div><strong>Last update:</strong> <span class="last-update">loading...</span></div>
-        <div><strong>Refresh in:</strong> <span class="countdown">loading...</span></div>
-    </div>
-    <div style="clear: both;"></div>
-</section>
 <main>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Current status</th>
-            <th>Latest status</th>
-            <th class="d-avg">Last 24h</th>
-            <th class="d-avg">Last 30 days</th>
-            <th class="d-0">Day 0</th>
-            <th class="d-1">Day -1</th>
-            <th class="d-2">Day -2</th>
-            <th class="d-3">Day -3</th>
-            <th class="d-4">Day -4</th>
-            <th class="d-5">Day -5</th>
-            <th class="d-6">Day -6</th>
-        </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="container">
+        <p>
+            Status dashboard is a project developed by
+            <a target="_blank" href="https://afonsodemori.com">Afonso de Mori</a>.
+        </p>
+        <p>
+            It's a frontend panel to consume the data supplied by
+            <a target="_blank" href="https://uptimerobot.com/about">Uptime Robot</a>'s API.
+        </p>
+        <p>The project is developed in simple HTML and JavaScript (jQuery) so it can be hosted on
+            <a target="_blank" href="https://pages.github.com/">Github Pages</a> and "never" get down :)
+        </p>
+        <p>
+            You can see/clone/fork this project on
+            <a target="_blank" href="https://github.com/afonsodemori/aio-status">Github</a>.
+        </p>
+        <p>
+            <a target="_blank" href="https://afonsodemori.com/contact">Get in touch</a> if you need anything ;-)
+        </p>
+    </div>
 </main>
 <footer>
     <div>
@@ -94,6 +80,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="/assets/js/dashboard.js"></script>
 </body>
 </html>
