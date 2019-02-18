@@ -187,7 +187,7 @@ function checkStatus() {
 
     if (down > 0) {
         $('header').css('background', 'var(--monitor-down)');
-        $('.navbar').css('background-color', 'var(--monitor-down) !important');
+        $('.navbar').css('background-color', 'var(--monitor-down)');
         $('#summary.fixed').css('border-top-color', 'var(--monitor-down)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-down.ico');
         $('meta[name="theme-color"]').attr('content', '#D32F2F');
@@ -199,7 +199,7 @@ function checkStatus() {
         $('meta[name="theme-color"]').attr('content', '#7CB342');
     } else {
         $('header').css('background', 'var(--monitor-not-checked-yet)');
-        $('.navbar').css('background-color', 'var(--monitor-not-checked-yet) !important');
+        $('.navbar').css('background-color', 'var(--monitor-not-checked-yet)');
         $('#summary.fixed').css('border-top-color', 'var(--monitor-not-checked-yet)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-not-checked-yet.ico');
         $('meta[name="theme-color"]').attr('content', '#E0E0E0');
