@@ -8,13 +8,18 @@ self.addEventListener('install', function (event) {
 
                     '/config/api-keys.json',
 
-                    '/assets/general.css',
-                    '/assets/dashboard.css',
-                    '/assets/dashboard.js',
+                    '/assets/css/general.css',
+                    '/assets/css/dashboard.css',
+                    '/assets/js/dashboard.js',
+
+                    '/assets/app.manifest',
 
                     '/assets/img/favicons/android-chrome-192x192.png',
                     '/assets/img/favicons/android-chrome-512x512.png',
+
                     '/assets/img/favicons/favicon-down.ico',
+                    '/assets/img/favicons/favicon-not-checked-yet.ico',
+                    '/assets/img/favicons/favicon-seems-offline.ico',
                     '/assets/img/favicons/favicon-up.ico',
 
                     'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
