@@ -1,3 +1,8 @@
+# 1.3.1, 2019-02-18
+  - Add navbar
+  - Create /about.html page and README.md
+  - Fix mobile theme color for monitor-up
+
 # 1.3.0, 2019-02-17
   - [feature] Add offline support
   - [bugfix] Fix count of paused/unknown monitors
