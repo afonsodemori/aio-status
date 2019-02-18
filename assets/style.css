@@ -23,7 +23,13 @@ strong {
     font-weight: bold;
 }
 
+.navbar {
+    transition: 600ms;
+    background-color: var(--monitor-not-checked-yet);
+}
+
 header {
+    margin-top: -56px;
     transition: 600ms;
     background: var(--monitor-not-checked-yet);
     text-align: center;
