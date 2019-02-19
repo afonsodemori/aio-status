@@ -19,7 +19,7 @@ self.addEventListener('install', function (event) {
 
                     '/assets/img/favicons/favicon-down.ico',
                     '/assets/img/favicons/favicon-not-checked-yet.ico',
-                    '/assets/img/favicons/favicon-seems-offline.ico',
+                    '/assets/img/favicons/favicon-seems-down.ico',
                     '/assets/img/favicons/favicon-up.ico',
 
                     'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
