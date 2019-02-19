@@ -1,3 +1,15 @@
+# 1.3.3, 2019-02-19
+  - Remove logo and text-shadow from header
+  - Change last 24h column to last 7d
+  - Avoid summary waiting to have .fixed to change the status color
+  - Change icons for not-checked-yet, seems-down and down
+  - Change colors for monitor paused and not checked yet
+  - Set timeout for ajax api requests
+  - Fix theme color for about.html; change theme color in app.manifest
+
+# 1.3.2, 2019-02-18
+  - [hotfix] Fix assets URLs in service-worker.js
+
 # 1.3.1, 2019-02-18
   - Add navbar
   - Create /about.html page and README.md
