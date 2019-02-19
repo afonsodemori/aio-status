@@ -203,7 +203,7 @@ function checkStatus() {
         $('.navbar').css('background-color', 'var(--monitor-not-checked-yet)');
         $('#summary.fixed').css('border-top-color', 'var(--monitor-not-checked-yet)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-not-checked-yet.ico');
-        $('meta[name="theme-color"]').attr('content', '#E0E0E0');
+        $('meta[name="theme-color"]').attr('content', '#BDBDBD');
     }
 }
 

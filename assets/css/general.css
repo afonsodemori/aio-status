@@ -1,6 +1,6 @@
 :root {
-    --monitor-paused: #757575; /* 0 - paused */
-    --monitor-not-checked-yet: #E0E0E0; /* 1 - not checked yet */
+    --monitor-paused: #616161; /* 0 - paused */
+    --monitor-not-checked-yet: #BDBDBD; /* 1 - not checked yet */
     --monitor-up: #7CB342; /* 2 - up */
     --monitor-seems-down: #F57C00; /* 8 - seems down */
     --monitor-down: #D32F2F; /* 9 - down */
