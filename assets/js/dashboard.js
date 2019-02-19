@@ -71,10 +71,10 @@ function formatDuration(duration) {
 function loadData() {
     let now = new Date();
 
-    let last24h = (Math.floor(now.getTime() / 1000) - 60 * 60 * 24) + '_' + Math.floor(now.getTime() / 1000);
+    let last7d = (Math.floor(now.getTime() / 1000) - 60 * 60 * 24 * 7) + '_' + Math.floor(now.getTime() / 1000);
     let last30d = (Math.floor(now.getTime() / 1000) - 60 * 60 * 24 * 30) + '_' + Math.floor(now.getTime() / 1000);
 
-    let ranges = last24h + '-' + last30d;
+    let ranges = last7d + '-' + last30d;
 
     let day = now;
     day.setHours(0, 0, 0, 0);
