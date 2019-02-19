@@ -90,6 +90,7 @@ function loadData() {
         $.ajax({
             type: 'post',
             url: 'https://api.uptimerobot.com/v2/getMonitors',
+            timeout: 3000,
             data: {
                 api_key: apiKeys[m].key,
                 custom_uptime_ranges: ranges,
