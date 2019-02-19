@@ -71,10 +71,10 @@ function formatDuration(duration) {
 function loadData() {
     let now = new Date();
 
-    let last24h = (Math.floor(now.getTime() / 1000) - 60 * 60 * 24) + '_' + Math.floor(now.getTime() / 1000);
+    let last7d = (Math.floor(now.getTime() / 1000) - 60 * 60 * 24 * 7) + '_' + Math.floor(now.getTime() / 1000);
     let last30d = (Math.floor(now.getTime() / 1000) - 60 * 60 * 24 * 30) + '_' + Math.floor(now.getTime() / 1000);
 
-    let ranges = last24h + '-' + last30d;
+    let ranges = last7d + '-' + last30d;
 
     let day = now;
     day.setHours(0, 0, 0, 0);
@@ -90,6 +90,7 @@ function loadData() {
         $.ajax({
             type: 'post',
             url: 'https://api.uptimerobot.com/v2/getMonitors',
+            timeout: 3000,
             data: {
                 api_key: apiKeys[m].key,
                 custom_uptime_ranges: ranges,
@@ -188,21 +189,21 @@ function checkStatus() {
     if (down > 0) {
         $('header').css('background', 'var(--monitor-down)');
         $('.navbar').css('background-color', 'var(--monitor-down)');
-        $('#summary.fixed').css('border-top-color', 'var(--monitor-down)');
+        $('#summary').css('border-top-color', 'var(--monitor-down)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-down.ico');
         $('meta[name="theme-color"]').attr('content', '#D32F2F');
     } else if (up > 0) {
         $('header').css('background', 'var(--monitor-up)');
         $('.navbar').css('background-color', 'var(--monitor-up)');
-        $('#summary.fixed').css('border-top-color', 'var(--monitor-up)');
+        $('#summary').css('border-top-color', 'var(--monitor-up)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-up.ico');
         $('meta[name="theme-color"]').attr('content', '#7CB342');
     } else {
         $('header').css('background', 'var(--monitor-not-checked-yet)');
         $('.navbar').css('background-color', 'var(--monitor-not-checked-yet)');
-        $('#summary.fixed').css('border-top-color', 'var(--monitor-not-checked-yet)');
+        $('#summary').css('border-top-color', 'var(--monitor-not-checked-yet)');
         $('link[rel="icon"]').attr('href', '/assets/img/favicons/favicon-not-checked-yet.ico');
-        $('meta[name="theme-color"]').attr('content', '#E0E0E0');
+        $('meta[name="theme-color"]').attr('content', '#BDBDBD');
     }
 }
 
