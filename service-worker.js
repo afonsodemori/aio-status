@@ -1,3 +1,5 @@
+// version: 1.4.0
+
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open('cache').then(function (cache) {

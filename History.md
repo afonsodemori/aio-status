@@ -1,3 +1,9 @@
+# 1.4.0, 2019-02-22
+  - [feature] Call own API to reduce number of requests; fallback to UptimeRobot's API if own API is unavailable
+  - [bugfix] Fix wrong day range count
+  - Add page for error 404
+  - Remove integrity check from js and css
+
 # 1.3.3, 2019-02-19
   - Remove logo and text-shadow from header
   - Change last 24h column to last 7d
