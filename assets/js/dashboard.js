@@ -1,4 +1,5 @@
-const refresh = 15;
+const PAGE_REFRESH = 15;
+const AJAX_TIMEOUT = 3;
 
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register('/service-worker.js').then(function(){
@@ -32,7 +33,6 @@ function init(keys) {
 
 let apiKeys = null;
 $.ajax({
-    async: true,
     url: '/config/api-keys.json',
     dataType: 'json',
     success: function (data) {
@@ -86,77 +86,46 @@ function loadData() {
         ranges += '-' + range[1] + '_' + range[0];
     }
 
-    for (let m = 0; m < apiKeys.length; m++) {
-        $.ajax({
-            type: 'post',
-            url: 'https://api.uptimerobot.com/v2/getMonitors',
-            timeout: 3000,
-            data: {
-                api_key: apiKeys[m].key,
-                custom_uptime_ranges: ranges,
-                logs: 1,
-                logs_limit: 1
-            },
-            async: true,
+    let monitors = [];
+    for (let i = 0; i < apiKeys.length; i++) {
+        monitors.push(apiKeys[i].id);
+    }
+
+    let ajaxSettings = {
+        type: 'get',
+        url: 'https://api.status.afonso.io/monitors',
+        timeout: AJAX_TIMEOUT * 1000,
+        async: true,
+        data: {
+            id: monitors.join('-'),
+            custom_uptime_ranges: ranges,
+            logs: 1,
+            logs_limit: 1
+        }
+    };
+
+    $.ajax(Object.assign(ajaxSettings, {
+        success: function (data) {
+            for (let i = 0; i < data.monitors.length; i++) {
+                processMonitorData(data.monitors[i]);
+            }
+        },
+        error: function (data) {
+            delete ajaxSettings.data.id;
+            loadFromUptimeRobot(ajaxSettings);
+        }
+    }));
+}
+
+function loadFromUptimeRobot(ajaxSettings) {
+    ajaxSettings.type = 'post';
+    ajaxSettings.url = 'https://api.uptimerobot.com/v2/getMonitors';
+
+    for (let i = 0; i < apiKeys.length; i++) {
+        ajaxSettings.data.api_key = apiKeys[i].key;
+        $.ajax(Object.assign(ajaxSettings, {
             success: function (data) {
-                let monitor = data.monitors[0];
-                let id = '#monitor-' + monitor.id;
-                let ratio = monitor.custom_uptime_ranges.split('-');
-
-                $(id + ' .status')
-                    .removeAttr('class')
-                    .addClass('status')
-                    .addClass('status-' + monitor.status)
-                ;
-
-                if (monitor.logs.length === 0) {
-                    $(id + ' .latest .time').html('');
-                    $(id + ' .latest .reason').html('');
-                    $(id + ' .latest .duration').html('');
-                }
-
-                let log = monitor.logs[0];
-                $(id + ' .latest .time').html(formatDatetime(log.datetime));
-                $(id + ' .latest .reason').html(log.reason.code + ' - ' + log.reason.detail);
-                $(id + ' .latest .duration').html(formatDuration(log.duration));
-
-                let color = 'inherit';
-                switch (monitor.status) {
-                    case 0:
-                        color = 'var(--monitor-paused)';
-                        break;
-                    case 1:
-                        color = 'var(--monitor-not-checked-yet)';
-                        break;
-                    case 2:
-                        color = 'var(--monitor-up)';
-                        break;
-                    case 8:
-                        color = 'var(--monitor-seems-offline)';
-                        break;
-                    case 9:
-                        color = 'var(--monitor-down)';
-                        break;
-                }
-
-                $(id + ' .latest .reason').css('color', color);
-
-                for (let i = 0; i < ratio.length; i++) {
-                    let content = (ratio[i] === '100.000' ? 100 : ratio[i]) + '%';
-                    let $el = $(id + ' .r' + i);
-                    if (content !== $el.html()) {
-                        $el
-                            .removeAttr('class')
-                            .addClass('r' + i)
-                            .addClass('ratio-color-' + ratio[i].split('.')[0])
-                            .html(content)
-                            .hide()
-                            .slideDown()
-                        ;
-                    }
-                }
-
-                $('.last-update').html(formatDatetime((new Date()).getTime() / 1000));
+                processMonitorData(data.monitors[0]);
             },
             error: function (data) {
                 let toast = '<div class="toast">Error fetching uptime data. Check your internet connection.<div>';
@@ -171,8 +140,68 @@ function loadData() {
                     ;
                 }
             }
-        });
+        }));
     }
+}
+
+function processMonitorData(monitor) {
+    let id = '#monitor-' + monitor.id;
+    let ratio = monitor.custom_uptime_ranges.split('-');
+
+    $(id + ' .status')
+        .removeAttr('class')
+        .addClass('status')
+        .addClass('status-' + monitor.status)
+    ;
+
+    if (monitor.logs.length === 0) {
+        $(id + ' .latest .time').html('');
+        $(id + ' .latest .reason').html('');
+        $(id + ' .latest .duration').html('');
+    }
+
+    let log = monitor.logs[0];
+    $(id + ' .latest .time').html(formatDatetime(log.datetime));
+    $(id + ' .latest .reason').html(log.reason.code + ' - ' + log.reason.detail);
+    $(id + ' .latest .duration').html(formatDuration(log.duration));
+
+    let color = 'inherit';
+    switch (monitor.status) {
+        case 0:
+            color = 'var(--monitor-paused)';
+            break;
+        case 1:
+            color = 'var(--monitor-not-checked-yet)';
+            break;
+        case 2:
+            color = 'var(--monitor-up)';
+            break;
+        case 8:
+            color = 'var(--monitor-seems-offline)';
+            break;
+        case 9:
+            color = 'var(--monitor-down)';
+            break;
+    }
+
+    $(id + ' .latest .reason').css('color', color);
+
+    for (let i = 0; i < ratio.length; i++) {
+        let content = (ratio[i] === '100.000' ? 100 : ratio[i]) + '%';
+        let $el = $(id + ' .r' + i);
+        if (content !== $el.html()) {
+            $el
+                .removeAttr('class')
+                .addClass('r' + i)
+                .addClass('ratio-color-' + ratio[i].split('.')[0])
+                .html(content)
+                .hide()
+                .slideDown()
+            ;
+        }
+    }
+
+    $('.last-update').html(formatDatetime((new Date()).getTime() / 1000));
 }
 
 function checkStatus() {
@@ -219,13 +248,13 @@ $(document).on('scroll', function () {
     }
 });
 
-let timeout = refresh;
+let timeout = PAGE_REFRESH;
 setInterval(function () {
     checkStatus();
     if (--timeout === 0) {
         loadData();
         $('.countdown').html(timeout);
-        timeout = refresh;
+        timeout = PAGE_REFRESH;
     } else {
         $('.countdown').html(timeout);
     }
