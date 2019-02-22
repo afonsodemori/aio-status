@@ -1,11 +1,20 @@
 # About
 
-**Status dashboard** is a project developed by [Afonso de Mori](https://afonsodemori.com).
+**Status Dashboard** is frontend to consume the data provided by [Uptime Robot](https://uptimerobot.com/about)'s API.
 
-It's a frontend panel to consume the data supplied by [Uptime Robot](https://uptimerobot.com/about)'s API.
+The project is hosted on Github Pages, so it "never" gets down. The api keys in the project are read-only, so it's not a problem letting them in the repository.
 
-The project is developed in simple HTML and JavaScript (jQuery) so it can be hosted on [Github Pages](https://pages.github.com/) and "never" get down :)
+# Data source
 
-[Get in touch](https://afonsodemori.com/contact) if you need anything ;-)
+The data is provided by Uptime Robot's API through read-only API keys. Each read-only key has access to a single monitor.
 
-— [status.afonso.io](https://status.afonso.io)
+To avoid making as many requests as the number of monitors enabled, I created a wrapper, hosted on my server, with a full access key that makes a single request for all monitors at once.
+
+The wrapper's source-code is available at https://github.com/afonsodemori/aio-status-api. In case this endpoint is down, the frontend falls back to Uptime Robot's API.
+
+# Links
+
+  - Frontend: https://status.afonso.io
+  - Frontend source: *(this repo)*
+  - API: https://api.status.afonso.io
+  - API source:  https://github.com/afonsodemori/aio-status-api
