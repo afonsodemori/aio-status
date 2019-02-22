@@ -77,10 +77,11 @@ function loadData() {
     let ranges = last7d + '-' + last30d;
 
     let day = now;
+    day.setDate(day.getDate() + 1);
     day.setHours(0, 0, 0, 0);
     let range = [];
     for (let i = 0; i < 7; i++) {
-        $('.d-' + i).html(day.getDate() + '/' + (day.getMonth() + 1));
+        $('.d-' + i).html((day.getDate() - 1) + '/' + (day.getMonth() + 1));
         range[0] = Math.floor(day.getTime() / 1000);
         range[1] = Math.floor(day.setDate(day.getDate() - 1) / 1000);
         ranges += '-' + range[1] + '_' + range[0];
