@@ -1,3 +1,6 @@
+# 1.4.1, 2019-02-25
+  - Add api key for api.status.afonso.io
+
 # 1.4.0, 2019-02-22
   - [feature] Call own API to reduce number of requests; fallback to UptimeRobot's API if own API is unavailable
   - [bugfix] Fix wrong day range count
