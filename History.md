@@ -1,3 +1,6 @@
+# 1.4.2, 2019-02-25
+  - Add api keys for api.sophia.afonso.io and pma.afonso.io
+
 # 1.4.1, 2019-02-25
   - Add api key for api.status.afonso.io
 

@@ -1,4 +1,4 @@
-// version: 1.4.1
+// version: 1.4.2
 
 self.addEventListener('install', function (event) {
     event.waitUntil(
