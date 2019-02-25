@@ -5,6 +5,11 @@
     "key": "m779030329-2ec9bed1fe2bae84e2906ea1"
   },
   {
+    "id": "782041829",
+    "name": "api.sophia.afonso.io",
+    "key": "m782041829-bfd96a8b0e2d3bd123d47d08"
+  },
+  {
     "id": "782028453",
     "name": "api.status.afonso.io",
     "key": "m782028453-4b98315ce3e853a749c084c8"
@@ -33,6 +38,11 @@
     "id": "778829519",
     "name": "play.afonso.io",
     "key": "m778829519-d6e1511d75d958189ac61db5"
+  },
+  {
+    "id": "782041826",
+    "name": "pma.afonso.io",
+    "key": "m782041826-b5258d2f09fb9d5aa4fcd50d"
   },
   {
     "id": "781855791",
