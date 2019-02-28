@@ -1,5 +1,5 @@
 const PAGE_REFRESH = 15;
-const AJAX_TIMEOUT = 3;
+const AJAX_TIMEOUT = 5;
 
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register('/service-worker.js').then(function(){
@@ -79,11 +79,12 @@ function loadData() {
     let day = now;
     day.setDate(day.getDate() + 1);
     day.setHours(0, 0, 0, 0);
+
     let range = [];
     for (let i = 0; i < 7; i++) {
-        $('.d-' + i).html((day.getDate() - 1) + '/' + (day.getMonth() + 1));
         range[0] = Math.floor(day.getTime() / 1000);
         range[1] = Math.floor(day.setDate(day.getDate() - 1) / 1000);
+        $('.d-' + i).html(day.getDate() + '/' + (day.getMonth() + 1));
         ranges += '-' + range[1] + '_' + range[0];
     }
 
