@@ -1,5 +1,5 @@
 const PAGE_REFRESH = 15;
-const AJAX_TIMEOUT = 3;
+const AJAX_TIMEOUT = 5;
 
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register('/service-worker.js').then(function(){
