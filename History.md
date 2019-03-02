@@ -1,3 +1,6 @@
+# 1.4.4, 2019-03-03
+  - Add api key for home.afonso.io
+
 # 1.4.3, 2019-02-28
   - [bugfix] Fix day count
   - Increase ajax timeout
