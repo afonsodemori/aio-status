@@ -20,11 +20,6 @@
     "key": "m780092965-8ab17aeab21c73f2877d6e78"
   },
   {
-    "id": "782064947",
-    "name": "home.afonso.io",
-    "key": "m782064947-efdc696f8ba6399c5dc1dc2d"
-  },
-  {
     "id": "781259968",
     "name": "ci.afonso.io",
     "key": "m781259968-c3eb7868aa88642c44159d94"
@@ -78,6 +73,21 @@
     "id": "781964216",
     "name": "srv-gopher.afonso.io",
     "key": "m781964216-da40ca745868df6d82022cbd"
+  },
+  {
+    "id": "782083193",
+    "name": "srv-ops.afonso.io",
+    "key": "m782083193-e2cae947611e7dd4b7bc4662"
+  },
+  {
+    "id": "782064947",
+    "name": "srv-rpi.afonso.io",
+    "key": "m782064947-efdc696f8ba6399c5dc1dc2d"
+  },
+  {
+    "id": "782083196",
+    "name": "srv-web1.afonso.io",
+    "key": "m782083196-adddffe2b673d3fc5c9481f5"
   },
   {
     "id": "781976017",
