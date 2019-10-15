@@ -1,3 +1,6 @@
+# 1.4.7, 2019-10-15
+  - Forgot to update README.md :unamused:
+
 # 1.4.6, 2019-10-15
   - Update api-keys
   - Update api endpoint
