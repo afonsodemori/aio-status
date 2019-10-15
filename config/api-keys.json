@@ -6,12 +6,17 @@
   },
   {
     "id": "782041829",
-    "name": "api.sophia.afonso.io",
+    "name": "apis.afonso.io/sophia",
     "key": "m782041829-bfd96a8b0e2d3bd123d47d08"
   },
   {
+    "id": "783629719",
+    "name": "apis.afonso.io/fake",
+    "key": "m783629719-791c28d378f089ce3efc79e1"
+  },
+  {
     "id": "782028453",
-    "name": "api.status.afonso.io",
+    "name": "apis.afonso.io/status",
     "key": "m782028453-4b98315ce3e853a749c084c8"
   },
   {
@@ -60,21 +65,6 @@
     "key": "m780092128-ce1ae07f1bd8d6c5d0b28602"
   },
   {
-    "id": "781964243",
-    "name": "srv-emu.afonso.io",
-    "key": "m781964243-6987ac857fb0cde2cde7e080"
-  },
-  {
-    "id": "781964246",
-    "name": "srv-ferret.afonso.io",
-    "key": "m781964246-3eada18b3f81103ad5c788b0"
-  },
-  {
-    "id": "781964216",
-    "name": "srv-gopher.afonso.io",
-    "key": "m781964216-da40ca745868df6d82022cbd"
-  },
-  {
     "id": "782083193",
     "name": "srv-ops.afonso.io",
     "key": "m782083193-e2cae947611e7dd4b7bc4662"
@@ -86,7 +76,7 @@
   },
   {
     "id": "782083196",
-    "name": "srv-web1.afonso.io",
+    "name": "srv-web.afonso.io",
     "key": "m782083196-adddffe2b673d3fc5c9481f5"
   },
   {
