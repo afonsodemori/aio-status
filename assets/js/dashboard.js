@@ -95,7 +95,7 @@ function loadData() {
 
     let ajaxSettings = {
         type: 'get',
-        url: 'https://api.status.afonso.io/monitors',
+        url: 'https://apis.afonso.io/status/monitors',
         timeout: AJAX_TIMEOUT * 1000,
         async: true,
         data: {
