@@ -1,3 +1,7 @@
+# 1.4.6, 2019-10-15
+  - Update api-keys
+  - Update api endpoint
+
 # 1.4.5, 2019-03-04
   - Add api key for srv-ops, srv-rpi, and rename home.afonso.io to srv-rpi.afonso.io
 
