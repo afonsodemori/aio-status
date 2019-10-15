@@ -16,5 +16,5 @@ The wrapper's source-code is available at https://github.com/afonsodemori/aio-st
 
   - Frontend: https://status.afonso.io
   - Frontend source: *(this repo)*
-  - API: https://api.status.afonso.io
+  - API: https://apis.afonso.io/status
   - API source:  https://github.com/afonsodemori/aio-status-api
