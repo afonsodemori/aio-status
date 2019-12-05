@@ -1,3 +1,6 @@
+# 1.5.0, 2019-12-05
+  - [feature] Add possibility use new UptimeRobot's "Read-Only API Key" to get all monitors at once
+
 # 1.4.7, 2019-10-15
   - Forgot to update README.md :unamused:
 
