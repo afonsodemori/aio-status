@@ -7,11 +7,44 @@ if (navigator.serviceWorker) {
     }).catch(console.log);
 }
 
-function init(keys) {
+function init() {
+    let newKeys = [];
+    if (apiKeys.length === 1 && apiKeys[0].name === 'MASTER-KEY') {
+        $.ajax({
+            type: 'post',
+            url: 'https://api.uptimerobot.com/v2/getMonitors',
+            timeout: AJAX_TIMEOUT * 1000,
+            async: false,
+            data: {
+                api_key: apiKeys[0].key
+            },
+            success: function (data) {
+                for (let i = 0; i < data.monitors.length; i++) {
+                    let monitor = data.monitors[i];
+
+                    if (monitor.friendly_name.substr(0, 4) === 'off-') continue;
+
+                    newKeys.push({
+                        'id' : monitor.id,
+                        'name' : monitor.friendly_name,
+                        'key' : apiKeys[0].key
+                    });
+                }
+            },
+            error: function (data) {
+                alert('error');
+            },
+        });
+    }
+
+    if (newKeys.length) {
+        apiKeys = newKeys;
+    }
+
     let append = '';
-    for (let i = 0; i < keys.length; i++) {
-        append += '<tr id="monitor-' + keys[i].id + '">' +
-            '<th class="align-middle text-nowrap"><span class="status"></span> ' + keys[i].name + '</th>' +
+    for (let i = 0; i < apiKeys.length; i++) {
+        append += '<tr id="monitor-' + apiKeys[i].id + '">' +
+            '<th class="align-middle text-nowrap"><span class="status"></span> ' + apiKeys[i].name + '</th>' +
             '<td class="align-middle latest">' +
             '<span class="reason">loading...</span>' +
             '<span class="time">loading...</span>' +
@@ -37,7 +70,7 @@ $.ajax({
     dataType: 'json',
     success: function (data) {
         apiKeys = data;
-        init(apiKeys);
+        init();
     }
 });
 
@@ -127,7 +160,9 @@ function loadFromUptimeRobot(ajaxSettings) {
         ajaxSettings.data.api_key = apiKeys[i].key;
         $.ajax(Object.assign(ajaxSettings, {
             success: function (data) {
-                processMonitorData(data.monitors[0]);
+                for (let i = 0; i < data.monitors.length; i++) {
+                    processMonitorData(data.monitors[i]);
+                }
             },
             error: function (data) {
                 let toast = '<div class="toast">Error fetching uptime data. Check your internet connection.<div>';
