@@ -20,12 +20,15 @@ function init() {
             },
             success: function (data) {
                 for (let i = 0; i < data.monitors.length; i++) {
-                    let key = {
-                        'id' : data.monitors[i].id,
-                        'name' : data.monitors[i].friendly_name,
+                    let monitor = data.monitors[i];
+
+                    if (monitor.friendly_name.substr(0, 4) === 'off-') continue;
+
+                    newKeys.push({
+                        'id' : monitor.id,
+                        'name' : monitor.friendly_name,
                         'key' : apiKeys[0].key
-                    };
-                    newKeys.push(key);
+                    });
                 }
             },
             error: function (data) {
