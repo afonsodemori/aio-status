@@ -18,6 +18,8 @@ UptimeRobot has now the option of a ReadOnly "Master Api Key" for getting read o
 
 More changes are coming to improve performance. For now, the file at `config/api-keys,json` can be configured as an array of monitor objects with `id`, `name` and `key` or with an array with a single monitor object with id = null, name = "MASTER-KEY" and your api key in the "key" property as below:
 
+> When bringing all monitors with a master key, it's possible to hide specific monitors prefixing its name with `off-` in UptimeRobot's dashboard.
+
 ```json
 [
   {
