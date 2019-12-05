@@ -12,6 +12,22 @@ To avoid making as many requests as the number of monitors enabled, I created a 
 
 The wrapper's source-code is available at https://github.com/afonsodemori/aio-status-api. In case this endpoint is down, the frontend falls back to Uptime Robot's API.
 
+# API KEYS
+
+UptimeRobot has now the option of a ReadOnly "Master Api Key" for getting read only information for all monitors at once.
+
+More changes are coming to improve performance. For now, the file at `config/api-keys,json` can be configured as an array of monitor objects with `id`, `name` and `key` or with an array with a single monitor object with id = null, name = "MASTER-KEY" and your api key in the "key" property as below:
+
+```json
+[
+  {
+    "id": null,
+    "name": "MASTER-KEY",
+    "key": "{your-key}"
+  }
+]
+```
+
 # Links
 
   - Frontend: https://status.afonso.io
