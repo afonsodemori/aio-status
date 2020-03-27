@@ -1,11 +1,13 @@
 #!/bin/bash
 
+source 'config/vars'
+CONTAINER_NAME=${PROJECT_NAME}-nginx
+PORT=${DEFAULT_PORT}
+
 usage() {
   echo 'Usage: bin/server [-p|--port number]'
   exit
 }
-
-PORT=3000
 
 while [[ $# -gt 0 ]]; do
   key="$1"
@@ -24,10 +26,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-CONTAINER_NAME='aio-status-nginx'
-
 docker run \
-  --name ${CONTAINER_NAME} \
+  --name "${CONTAINER_NAME}" \
   --interactive --tty --rm --detach \
   --volume "$PWD":/app \
   --volume "$PWD/config/server.conf":/etc/nginx/conf.d/default.conf \
@@ -39,7 +39,7 @@ trap stop_container INT
 
 stop_container() {
   echo -e "\nStopping \"${CONTAINER_NAME}\"..."
-  docker stop ${CONTAINER_NAME}
+  docker stop "${CONTAINER_NAME}"
 }
 
 if [[ $(uname) == 'Linux' ]]; then
@@ -56,4 +56,4 @@ fi
 echo "  - http://status.afonso.io.localhost:${PORT}"
 echo
 
-docker logs --follow ${CONTAINER_NAME}
+docker logs --follow "${CONTAINER_NAME}"
