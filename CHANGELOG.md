@@ -1,3 +1,7 @@
+# 1.5.1, 2020-03-27
+  - Move all public files to /docs
+  - Add docker configuration
+
 # 1.5.0, 2019-12-05
   - [feature] Add possibility use new UptimeRobot's "Read-Only API Key" to get all monitors at once
 
