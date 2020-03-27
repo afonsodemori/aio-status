@@ -1,0 +1,59 @@
+#!/bin/bash
+
+source 'config/vars'
+CONTAINER_NAME=${PROJECT_NAME}-nginx
+PORT=${DEFAULT_PORT}
+
+usage() {
+  echo 'Usage: bin/server [-p|--port number]'
+  exit
+}
+
+while [[ $# -gt 0 ]]; do
+  key="$1"
+  case $key in
+      -p|--port)
+        PORT="$2"
+        shift
+        shift
+        ;;
+      -h|--help)
+        usage
+        ;;
+      *)
+        echo -e "Invalid option ${1}"
+        usage
+  esac
+done
+
+docker run \
+  --name "${CONTAINER_NAME}" \
+  --interactive --tty --rm --detach \
+  --volume "$PWD":/app \
+  --volume "$PWD/config/server.conf":/etc/nginx/conf.d/default.conf \
+  --workdir /app \
+  --publish "${PORT}":80 \
+  nginx
+
+trap stop_container INT
+
+stop_container() {
+  echo -e "\nStopping \"${CONTAINER_NAME}\"..."
+  docker stop "${CONTAINER_NAME}"
+}
+
+if [[ $(uname) == 'Linux' ]]; then
+  IP_ADDRESS=$(hostname -I | awk '{print $1}')
+elif [[ $(uname) == 'Darwin' ]]; then
+  IP_ADDRESS=$(ipconfig getifaddr en0)
+fi
+
+echo -e "\nContainer \"${CONTAINER_NAME}\" is up and running. CTRL+C to stop it.\n"
+echo 'Server is available at:'
+if [[ -n "${IP_ADDRESS}" ]]; then
+  echo "  - http://${IP_ADDRESS}:${PORT}"
+fi
+echo "  - http://status.afonso.io.localhost:${PORT}"
+echo
+
+docker logs --follow "${CONTAINER_NAME}"
