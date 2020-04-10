@@ -1,3 +1,9 @@
+# 1.6.0, 2020-04-10
+ - [feature] Dark Mode
+ - Skip rendering monitors with no id (the master-key, for example)
+ - Mark statuses as not-checked-yet if can't connect to internet
+ - Reload page if not initiated due to having no internet connection
+
 # 1.5.1, 2020-03-27
   - Move all public files to /docs
   - Add docker configuration
