@@ -18,7 +18,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --monitor-not-checked-yet: #9f9f9f; /* 1 - not checked yet */
+        --monitor-not-checked-yet: #818181; /* 1 - not checked yet */
         --monitor-up: #679539; /* 2 - up */
         --monitor-seems-down: #d77300; /* 8 - seems down */
         --monitor-down: #b52400; /* 9 - down */
@@ -83,7 +83,7 @@ header {
 }
 
 header h1 {
-    color: #fff;
+    color: rgba(255, 255, 255, .75);
     margin: 0;
     padding: 2em 0;
 }
