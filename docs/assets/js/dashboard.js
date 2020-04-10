@@ -165,6 +165,12 @@ function loadFromUptimeRobot(ajaxSettings) {
                 }
             },
             error: function (data) {
+                $('.status')
+                    .removeAttr('class')
+                    .addClass('status')
+                    .addClass('status-not-checked-yet')
+                ;
+
                 let toast = '<div class="toast">Error fetching uptime data. Check your internet connection.<div>';
                 if ($('.toast').length === 0) {
                     $('body').append(toast);
@@ -227,14 +233,16 @@ function processMonitorData(monitor) {
         let content = (ratio[i] === '100.000' ? 100 : ratio[i]) + '%';
         let $el = $(id + ' .r' + i);
         if (content !== $el.html()) {
-            $el
-                .removeAttr('class')
-                .addClass('r' + i)
-                .addClass('ratio-color-' + ratio[i].split('.')[0])
-                .html(content)
-                .hide()
-                .slideDown()
-            ;
+            setTimeout(function() {
+                $el
+                    .removeAttr('class')
+                    .addClass('r' + i)
+                    .addClass('ratio-color-' + ratio[i].split('.')[0])
+                    .html(content)
+                    .hide()
+                    .slideDown()
+                ;
+            }, Math.round(Math.random() * 400));
         }
     }
 
