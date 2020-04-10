@@ -1,3 +1,37 @@
+:root {
+    --summary-bg: #fff;
+    --td-bg: rgba(0, 0, 0, .015);
+    --ratio-color: #fff;
+    --td-emphasis-bg: rgba(0, 0, 0, .05);
+    --summary-section-border: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --summary-bg: #353535;
+        --td-bg: rgba(255, 255, 255, .015);
+        --ratio-color: #000;
+        --td-emphasis-bg: rgba(255, 255, 255, .05);
+        --summary-section-border: #000;
+    }
+
+    .table {
+        color: #aaa;
+    }
+
+    .table th, .table td {
+        border-top-color: #000;
+    }
+
+    .table thead th {
+        border-bottom-color: #000;
+    }
+
+    .status {
+        border-color: #000 !important;
+    }
+}
+
 .navbar {
     background-color: var(--monitor-not-checked-yet);
 }
@@ -7,7 +41,7 @@ header {
 }
 
 #summary {
-    background: #fff;
+    background: var(--summary-bg);
     box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
     border-top: 0 solid var(--monitor-not-checked-yet);
 }
@@ -24,7 +58,7 @@ header {
 #summary .section {
     float: left;
     padding: 1em;
-    border-right: 1px solid #eee;
+    border-right: 1px solid var(--summary-section-border);
 }
 
 #summary .section.last {
@@ -92,14 +126,14 @@ th[class*=d-] {
 td[class*=r-] {
     text-align: center;
     vertical-align: middle;
-    background: #F5F5F5;
+    background: var(--td-bg);
 }
 
 tbody tr:hover,
 tr:hover td[class*=r-],
 td.r-0,
 td.r-1 {
-    background: #eee;
+    background: var(--td-emphasis-bg);
 }
 
 [class*=ratio-color] {
@@ -107,7 +141,7 @@ td.r-1 {
     text-align: center;
     width: 90px;
     background-color: var(--monitor-down);
-    color: #fff;
+    color: var(--ratio-color);
     font-weight: bold;
     font-size: .8em;
     padding: 5px 10px;
