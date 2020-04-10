@@ -10,6 +10,25 @@
     --uptime-warning: var(--monitor-seems-down);
     --uptime-danger: var(--monitor-down);
     --uptime-paused: var(--monitor-paused);
+
+    --body-bg: #FAFAFA;
+    --default-text-color: #212529;
+    --footer-bg: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --monitor-not-checked-yet: #818181; /* 1 - not checked yet */
+        --monitor-up: #679539; /* 2 - up */
+        --monitor-seems-down: #d77300; /* 8 - seems down */
+        --monitor-down: #b52400; /* 9 - down */
+
+        --uptime-good: #8ab85e;
+
+        --body-bg: #333;
+        --default-text-color: #aaa;
+        --footer-bg: #222;
+    }
 }
 
 html {
@@ -28,8 +47,9 @@ body {
     margin: 0;
     min-height: 100%;
     padding: 0 0 80px 0;
-    background: #FAFAFA;
+    background: var(--body-bg);
     font-family: 'Open Sans', sans-serif;
+    color: var(--default-text-color);
     font-size: 1em;
     font-weight: 300;
 }
@@ -63,7 +83,7 @@ header {
 }
 
 header h1 {
-    color: #fff;
+    color: rgba(255, 255, 255, .75);
     margin: 0;
     padding: 2em 0;
 }
@@ -79,7 +99,7 @@ footer {
     right: 0;
     bottom: 0;
     left: 0;
-    background: #333;
+    background: var(--footer-bg);
     font-size: .8em;
     text-align: center;
     color: #aaa;

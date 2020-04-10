@@ -32,7 +32,10 @@ function init() {
                 }
             },
             error: function (data) {
-                alert('error');
+                setTimeout(function () {
+                    window.location.reload();
+                }, PAGE_REFRESH * 1000);
+
             },
         });
     }
@@ -43,6 +46,11 @@ function init() {
 
     let append = '';
     for (let i = 0; i < apiKeys.length; i++) {
+        // Skip rendering monitors with no id (like the master-key)
+        if (apiKeys[i].id === null) {
+            continue;
+        }
+
         append += '<tr id="monitor-' + apiKeys[i].id + '">' +
             '<th class="align-middle text-nowrap"><span class="status"></span> ' + apiKeys[i].name + '</th>' +
             '<td class="align-middle latest">' +
@@ -165,12 +173,18 @@ function loadFromUptimeRobot(ajaxSettings) {
                 }
             },
             error: function (data) {
-                let toast = '<div class="toast">Error fetching uptime data. Check your internet connection.<div>';
+                $('.status')
+                    .removeAttr('class')
+                    .addClass('status')
+                    .addClass('status-not-checked-yet')
+                ;
+
+                let toast = `<div class="toast">Error fetching uptime data. Check your internet connection. Retrying in <span class="countdown">${PAGE_REFRESH}</span> seconds.<div>`;
                 if ($('.toast').length === 0) {
                     $('body').append(toast);
                     $('.toast')
                         .fadeIn()
-                        .delay(5000)
+                        .delay(8000)
                         .fadeOut(200, function () {
                             this.remove();
                         })
@@ -227,14 +241,16 @@ function processMonitorData(monitor) {
         let content = (ratio[i] === '100.000' ? 100 : ratio[i]) + '%';
         let $el = $(id + ' .r' + i);
         if (content !== $el.html()) {
-            $el
-                .removeAttr('class')
-                .addClass('r' + i)
-                .addClass('ratio-color-' + ratio[i].split('.')[0])
-                .html(content)
-                .hide()
-                .slideDown()
-            ;
+            setTimeout(function() {
+                $el
+                    .removeAttr('class')
+                    .addClass('r' + i)
+                    .addClass('ratio-color-' + ratio[i].split('.')[0])
+                    .html(content)
+                    .hide()
+                    .slideDown()
+                ;
+            }, Math.round(Math.random() * 400));
         }
     }
 
